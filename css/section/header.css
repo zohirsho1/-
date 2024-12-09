@@ -1,6 +1,5 @@
 .header__logo h4 {
   padding-left: 30px;
-
   font-weight: 700;
   font-size: 24px;
   text-transform: uppercase;
@@ -8,21 +7,20 @@
   color: #000000;
   opacity: 0.8;
 }
-.header__nav{
+
+.header__nav {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
-.header__menu,
-.header__menu-mobile {
+.header__menu {
   padding: 20px;
-
-  flex: 1.236;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 64px;
-
   list-style: none;
 }
 
@@ -42,9 +40,72 @@
   object-fit: contain;
 }
 
-.header__menu-mobile {
-  display: none;
-  gap: 20px;
+/* Адаптивность для планшетов и мобильных устройств */
+@media (max-width: 1024px) {
+  .header__menu {
+    gap: 40px;
+  }
 
-  position: relative;
+  .header__menu li {
+    font-size: 14px; /* Уменьшаем размер шрифта для планшетов */
+  }
+}
+
+@media (max-width: 768px) {
+  .header__menu {
+    gap: 20px; /* Меньше промежуток между элементами меню */
+  }
+
+  .header__menu li {
+    font-size: 12px; /* Уменьшаем размер шрифта для мобильных устройств */
+  }
+
+  /* Если меню скрыто для мобильных устройств, добавляем адаптивное поведение */
+  .header__menu {
+    display: none; /* Скрываем меню на мобильных */
+  }
+
+  .header__nav::after {
+    content: "Меню";
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--secondary-color);
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: #fff;
+  }
+
+  .header__nav.active .header__menu {
+    display: block; /* Показать меню при активации */
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    padding: 10px;
+  }
+
+  .header__menu li {
+    font-size: 16px;
+    text-align: center;
+  }
+}
+
+/* Для ещё меньших экранов (например, мобильных телефонов с экранами меньше 480px) */
+@media (max-width: 480px) {
+  .header__logo h4 {
+    font-size: 20px; /* Уменьшаем шрифт логотипа */
+  }
+
+  .header__menu {
+    gap: 10px; /* Еще меньшие промежутки между элементами меню */
+  }
+
+  .header__menu li {
+    font-size: 10px; /* Уменьшаем размер шрифта еще больше */
+  }
 }

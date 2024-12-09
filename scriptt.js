@@ -5,3 +5,7 @@ function handleSubmit(event) {
     form.style.display = 'none'; // Hide the registration form
     alert('Registration successful!'); // Show a success message (optional)
 }
+document.querySelector('.header__nav').addEventListener('click', function() {
+    this.classList.toggle('active');
+  });
+  
